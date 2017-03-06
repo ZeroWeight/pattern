@@ -1,0 +1,25 @@
+\documentclass[UTF8,a4paper]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\title{模式识别作业1}
+\author{张蔚桐\ 2015011493\ 自55}
+\begin {document}
+\maketitle
+\section{}
+根据线性回归方程可以得到$$\begin{aligned}
+\hat{y}=\hat{\theta_0}+\hat{\theta_1}x \\ 
+\hat{\theta_0}=\bar{y}-\hat{\theta_1}\bar{x} \\
+\hat{\theta_1}=\frac{E((y-E(y))(x-E(x)))}{D(x)}\\
+\end{aligned}$$其中$D(x),E(x)$分别为样本的方差和期望,
+因此可以得到$$\begin{aligned}
+R^2=\frac{E((\bar{y}-\hat{y})^2)}{D(y)} \\
+r^2=\frac{E((y-E(y))(x-E(x)))}{D(x)D(y)} \end{aligned} $$
+欲证$R^2=r^2$即证明$$E((\bar{y}-\hat{y})^2)=\frac{E((y-E(y))(x-E(x)))}{D(x)}$$
+左侧$$\begin{aligned}=E^2(y)-2E(y)E(\hat{\theta_0}+\hat{\theta_1}x) - E((\hat{\theta_0}+\hat{\theta_1}x)^2)\\ =E^2(y)-2E(y)E(\bar{y}+\hat{\theta_1}(x-\bar{x})+E((\bar{y}+\hat{\theta_1}(x-\bar{x})^2)
+\end{aligned}$$
+
+\end{document}
