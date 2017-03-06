@@ -3,7 +3,7 @@ function [ x,y ] = generate( size,sigma )
 %   Detailed explanation goes here
 %   generate the array according to the problem
 theta1=3.5;
-theta0=0.6;
+theta0=6;
 x=zeros(size,1);
 y=zeros(size,1);
 for i=1:size
