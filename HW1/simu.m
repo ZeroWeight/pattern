@@ -11,10 +11,9 @@ r=sqrt((err1'*err1)/(sig1'*sig1));
 %gererate another 100
 [x_n,y_n]=generate(100,sigma);
 %calc r
-y_hat_n=polyval(p,x_n);
-err2=mean(y_n)-y_hat_n;
-sig2=mean(y_n)-y_n;
-R=sqrt((err2'*err2)/(sig2'*sig2));
+err=polyval(p,x_n)-y_n;
+err2=err'*err/100;
+R=sqrt(err2);
 %draw
 x1 = linspace(min(min(x(:),min(x_n(:)))),max(max(x(:),max(x_n(:)))));
 y1 = polyval(p, x1);
