@@ -44,4 +44,14 @@ r^2=\frac{E^2((y-E(y))(x-E(x)))}{D(x)D(y)} \end{aligned} $$
 \caption{100个样本点的情况}
 \label{100}
 \end{figure}
+\section{}
+经过计算得到$\hat{\theta_0}=726.0731,\hat{\theta_1}=-0.7537,\hat{\theta_2}=-161.5401,\hat{\theta_3}=61.4084$
+因此（2）有$$\hat{y}=\hat{\theta_0}+110\hat{\theta_1}+3\hat{\theta_2}+\hat{\theta_3}=219.9584$$
+
+考察交叉项可以得到$$\hat{y}=\hat{\theta_0}+\hat{\theta_1}x_1+\hat{\theta_2}x_2+\hat{\theta_3}x_3+\hat{\theta_4}x_1x_3+\hat{\theta_5}x_2x_3$$
+计算得到  
+$$\begin{aligned}\hat{\theta_0}=669.97,\hat{\theta_1}=-0.8563,\hat{\theta_2}=-107.602\\ \hat{\theta_3}=160.5363,\hat{\theta_4}=0.2065,\hat{\theta_5}=-98.7687\end{aligned}$$
+拟合得到$\hat{y}=140$
+
+考察$\hat{\theta_4}$对$\hat{\theta_1}$，$\hat{\theta_5}$对$\hat{\theta_2}$，当$x_3$在0和1之间变化时这些变化还是很明显的，因此认为考察交叉项有意义
 \end{document}
