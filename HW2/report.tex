@@ -1,0 +1,65 @@
+\documentclass[UTF8,a4paper]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\title{模式识别作业2}
+\author{张蔚桐\ 2015011493\ 自55}
+\begin {document}
+\maketitle
+\section{}
+\subsection{}
+根据题目中的提示，我们将误差函数分别对$\mathbf{w}$和$w_0$求导可以得到
+\begin{equation}\displaystyle{
+\frac{\partial E}{\partial \mathbf{w}}=\sum_{i=1}^n((\mathbf{w}^T\mathbf{x}_i+w_0-t_i)\mathbf{x}_i^T) }
+\end{equation}\begin{equation}
+\displaystyle{
+\frac{\partial E}{\partial w_0}=\sum_{i=1}^n(\mathbf{w}^T\mathbf{x}_i+w_0-t_i)}
+\end{equation}
+整理可得误差函数极小值点的方程
+\begin{equation}
+\displaystyle{
+\frac{\partial E}{\partial \mathbf{w}}=
+\mathbf{w}^T\sum_{i=1}^n(\mathbf{x}_i\mathbf{x}_i^T)+w_0\sum_{i=1}^n(\mathbf{x}_i^T)-\sum_{i=1}^n(t_i\mathbf{x}_i^T)\ =0}
+\label{w} 
+\end{equation}\begin{equation}
+\displaystyle{
+\frac{\partial E}{\partial w_0}=\mathbf{w}^T\sum_{i=1}^n(\mathbf{x}_i)+nw_0-\sum_{i=1}^n(t_i)=0}
+\label{w2}
+\end{equation}
+根据题目中的设定$t_1=\frac{n}{n_1}$以及$t_2=-\frac{n}{n_2}$可以迅速得到$\sum_{i=1}^n(t_i)=0$
+
+因此化简\ref{w2}式得到
+\begin{equation}
+\displaystyle{
+w_0=-\frac{\mathbf{w}^T\sum_{i=1}^n(\mathbf{x}_i)}{n}=-\mathbf{w}^T\mathbf{m}}
+\label{c1}
+\end{equation}
+由\ref{c1}，此问得证
+\subsection{}
+将\ref{c1}带入\ref{w}可以得到如下表述
+\begin{equation}\begin{aligned}
+\displaystyle{
+\mathbf{w}^T\sum_{i=1}^n(\mathbf{x}_i\mathbf{x}_i^T)-\mathbf{w}^T\mathbf{m}\sum_{i=1}^n(\mathbf{x}_i^T)-\sum_{i=1}^n(t_i\mathbf{x}_i^T)=0}\\
+\displaystyle{
+\mathbf{w}^T\sum_{i=1}^n((\mathbf{x}_i-\mathbf{m})\mathbf{x}_i^T)=\sum_{i=1}^n(t_i\mathbf{x}_i^T)}
+\label{w3}
+\end{aligned}\end{equation}
+下面着重研究\ref{w3}式右侧的表述，按照类别可以划分为
+\begin{equation}\begin{aligned}
+\displaystyle{
+\sum_{i=1}^n(t_i\mathbf{x}_i^T)=\frac{n}{n_1}\sum_{\mathcal{C}_1}(\mathbf{x}_i^T)-\frac{n}{n_2}\sum_{\mathcal{C}_2}(\mathbf{x}_i^T)}\\
+=n(\mathbf{m_1-m_2})
+\label{s}
+\end{aligned}\end{equation}
+结合\ref{s}，对\ref{w3}式取转置可得
+\begin{equation}
+\displaystyle{
+\sum_{i=1}^n(\mathbf{x}_i(\mathbf{x}_i-\mathbf{m})^T)\mathbf{w}=n(\mathbf{m_1-m_2})}
+\label{w4}
+\end{equation}
+下面处理\ref{w4}式$\mathbf{w}$前系数问题，根据统计学知识，我们可以得到$\mathbf{m}=\frac{n_1\mathbf{m_1}+n_2\mathbf{m_2}}{n}$，由此，将\ref{w4}式左侧系数按照类别展开，得到
+
+\end{document}
