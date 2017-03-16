@@ -1,4 +1,3 @@
-setdiff(1:M,Train);
 Check=setdiff(1:M,Train);
 Cdata=data(Check,:);
 CY=(Cdata(:,N)==4);
