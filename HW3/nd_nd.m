@@ -1,5 +1,4 @@
-clc;clear;
-count=100000;
+function [] = nd_nd( count )
 X=zeros(1,count);
 for j=1:1:3
     X=normrnd(0,1,1,count);
@@ -11,3 +10,4 @@ for j=1:1:3
 end
 s1=normpdf([-3:1e-3:3],0,1);
 plot([-3:1e-3:3],s1,'--');
+end

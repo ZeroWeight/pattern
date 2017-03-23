@@ -1,5 +1,4 @@
-clc;clear;
-count=100;
+function[]=u_nd(count)
 X=zeros(1,count);
 for j=1:1:3
     X=rand(1,count);
@@ -11,3 +10,4 @@ for j=1:1:3
 end
 s1=ones(1e3+1);
 plot([0:1e-3:1],s1,'--');
+end
