@@ -1,4 +1,5 @@
 %select data
+clc;
 index=[TY(:,1)==1,TY(:,1)==0];
 TX_1=TX(index(:,1),2:N-1);
 TX_0=TX(index(:,2),2:N-1);
@@ -15,5 +16,18 @@ for i=1:length(DX_0(:,1))
 end
 S_w=S_1+S_0;
 W=S_w^(-1)*((means(1,:)-means(2,:))');
-
-W_0=-0.5*W'*(means(1,:)+means(2,:))'-log(sum(index(:,2))/sum(index(:,1)))/(sum(index(:,2))+sum(index(:,1))-2);
+%normalize
+W = W ./ sqrt(W'*W);
+pdf0x=[round(min(TX_0*W)-3):1e-3:round(max(TX_0*W)+3)];
+pdf0y=zeros(1,length(pdf0x));
+for i=1:length(pdf0y)
+    pdf0y(i)=sum(normpdf(pdf0x(i),TX_0*W,1))/length(TX_0);
+end
+plot(pdf0x,pdf0y);
+hold on;
+pdf1x=[round(min(TX_1*W)-3):1e-3:round(max(TX_1*W)+3)];
+pdf1y=zeros(1,length(pdf1x));
+for i=1:length(pdf1y)
+    pdf1y(i)=sum(normpdf(pdf1x(i),TX_1*W,1))/length(TX_1);
+end
+plot(pdf1x,pdf1y);
