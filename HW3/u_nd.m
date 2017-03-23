@@ -1,3 +1,4 @@
+clc;clear;
 count=100;
 X=zeros(1,count);
 for j=1:1:3
