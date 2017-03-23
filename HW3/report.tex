@@ -1,0 +1,47 @@
+\documentclass[UTF8,a4paper]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    numbers=left, 
+    numberstyle= \tiny, 
+    keywordstyle= \color{ blue!70},
+    commentstyle= \color{red!50!green!50!blue!50}, 
+    frame=shadowbox, % 阴影效果
+    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+    escapeinside=``, % 英文分号中可写入中文
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+    framexleftmargin=2em
+} 
+\title{模式识别作业3}
+\author{张蔚桐\ 2015011493\ 自55}
+\begin {document}
+\maketitle
+\section{}
+考察采用$\lambda(\hat{\theta},\theta)=(\hat{\theta}-\theta)^2$的期望风险可得
+\begin{equation}
+R(\hat{\theta}|\mathbf{X})=\int_\theta(\hat{\theta}-\theta)^2P(\theta|\mathbf{X})\rm{d}\theta
+\label{R}
+\end{equation}
+ 对\ref{R}式求导可得
+\begin{equation}
+\frac{\rm{d}R(\hat{\theta}|\mathbf{X})}{\rm{d}\hat{\theta}}=\int_\theta2(\hat{\theta}-\theta)P(\theta|\mathbf{X})\rm{d}\theta
+\label{dR}
+\end{equation}
+期望风险最小化可以得到\ref{dR}式为0，因此可以得到
+\begin{equation}
+\int_\theta\theta P(\theta|\mathbf{X})\rm{d}\theta=\hat{\theta} \int_\theta{P(\theta|\mathbf{X})\rm{d}\theta}
+\label{eqn}
+\end{equation}
+\ref{eqn}等式右侧系数为归一化系数，因此可直接得到结论
+\begin{equation}
+\hat{\theta}=\int_\theta\theta P(\theta|\mathbf{X})\rm{d}\theta=E(\theta|\mathbf{X})
+\label{eqn}
+\end{equation}
+\section{}
+
+\end{document}
