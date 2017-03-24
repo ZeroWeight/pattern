@@ -69,5 +69,28 @@ R(\hat{\theta}|\mathbf{X})=\int_\theta(\hat{\theta}-\theta)^2P(\theta|\mathbf{X}
 \subsection{}
 采用最小错误率对测试样本进行预测的正确率在97\%左右
 \subsection{}
+采用最小风险的贝叶斯决策可以得到，对恶性肿瘤的预测正确率在测试集内部为100\%，而对良性肿瘤预测的正确率在92\%左右，平均的预测正确率在94\%左右
 \subsection{}
+多次测试可以得到，采用最小错误率的贝叶斯决策正确率普遍大于采用最小风险的贝叶斯决策。采用最小风险的贝叶斯决策通过牺牲风险较小的决策的正确性，提高了风险较大的决策的正确性。
+\clearpage
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{pdf.jpg}
+\caption{采用高斯窗的非参数估计}
+\label{pdf}
+\end{figure}
+其中MATLAB代码已经在附件中包含，平台采用的是MATLAB R2015b，执行时，请采用以下顺序
+\lstset{language=Matlab}
+\begin{lstlisting}
+% load data, please do first
+dataload; 
+
+% Fisher method
+mainFisher; 
+
+% Check for Fisher method
+% Please run after Fisher method
+checkFisher;%Min Err 
+checkFisher_1;%Min Risk
+\end{lstlisting}
 \end{document}
