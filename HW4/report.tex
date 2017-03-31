@@ -1,0 +1,61 @@
+\documentclass[UTF8,a4paper]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    numbers=left, 
+    numberstyle= \tiny, 
+    keywordstyle= \color{ blue!70},
+    commentstyle= \color{red!50!green!50!blue!50}, 
+    frame=shadowbox, % 阴影效果
+    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+    escapeinside=``, % 英文分号中可写入中文
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+    framexleftmargin=2em
+} 
+\title{模式识别作业4}
+\author{张蔚桐\ 2015011493\ 自55}
+\begin {document}
+\maketitle
+\section{神经网络的训练}
+如下图所示是隐节点分别为5,10,20,40,100的情况的测试集的confusionTest matrix
+
+从各个图中可以看出，随着隐节点的增多，混淆矩阵指示的准确性提高，训练误差逐渐降低，分析错误率同时降低，收敛速度也得到了提高。但是，当隐节点增多到一定程度后，出现了过拟合的情况，上面的各个评估指数的变化逐渐不明显
+\begin{figure}
+\includegraphics[width=\textwidth]{5confusionTest.jpg}
+\caption{5隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{5performance.jpg}
+\caption{5隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{10confusionTest.jpg}
+\caption{10隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{10performance.jpg}
+\caption{10隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{20confusionTest.jpg}
+\caption{20隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{20performance.jpg}
+\caption{20隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{40confusionTest.jpg}
+\caption{40隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{40performance.jpg}
+\caption{40隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{100confusionTest.jpg}
+\caption{100隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{100performance.jpg}
+\caption{100隐节点训练误差曲线}
+\end{figure}
+\clearpage
+\section{神经网络准确性和线性方法的比较}
+
+\end{document}
