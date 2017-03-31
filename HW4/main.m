@@ -11,3 +11,8 @@ for i=1:10
 end
 D1testX=reshape(testX,10000,28*28) ./ 255;
 D1train=reshape(trainX,60000,28*28) ./ 255;
+% 5   -> 1000 iteration
+% 10  -> 197
+% 20  -> 145
+% 40  -> 110
+% 100 -> 110
