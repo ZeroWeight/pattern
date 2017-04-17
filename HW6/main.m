@@ -1,10 +1,8 @@
 clc;clear;
 load('MNIST.mat');
-D1testX=reshape(testX,10000,28*28) ./ 255;
-D1train=reshape(trainX,60000,28*28) ./ 255;
 pattern1=8;
 pattern2=10;
-TAx=trainX(logical(trainY(:,pattern1)| trainY(:,pattern2)),:,:);
+TAx=trainX(logical(trainY(:,pattern1)| trainY(:,pattern2)),:,:) ./ 255;
 TAy=trainY(logical(trainY(:,pattern1)| trainY(:,pattern2)),:);
 TY=TAy(:,pattern1);
 NTY=[TY,~TY];
