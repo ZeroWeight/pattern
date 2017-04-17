@@ -1,3 +1,4 @@
+clc;
 load('SVM.mat');
 disp('Linear');
 disp(mean(CTY==trainedClassifierLinear.predictFcn(CTX)));
