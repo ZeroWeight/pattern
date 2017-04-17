@@ -1,4 +1,4 @@
-clc;clear;
+clc;
 load('MNIST.mat');
 pattern1=8;
 pattern2=10;

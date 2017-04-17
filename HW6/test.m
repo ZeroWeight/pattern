@@ -1,0 +1,13 @@
+load('SVM.mat');
+disp('Linear');
+disp(mean(CTY==trainedClassifierLinear.predictFcn(CTX)));
+disp('Quadratic')
+disp(mean(CTY==trainedClassifierQuadratic.predictFcn(CTX)));
+disp('Cubic');
+disp(mean(CTY==trainedClassifierCubic.predictFcn(CTX)));
+disp('Fine');
+disp(mean(CTY==trainedClassifierFine.predictFcn(CTX)));
+disp('Medium');
+disp(mean(CTY==trainedClassifierMedium.predictFcn(CTX)));
+disp('Coarse');
+disp(mean(CTY==trainedClassifierCoarse.predictFcn(CTX)));
