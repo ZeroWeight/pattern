@@ -23,7 +23,12 @@ patches = zeros(patchsize*patchsize, numpatches);
 %  more details.) As a second example, IMAGES(21:30,21:30,1) is an image
 %  patch corresponding to the pixels in the block (21,21) to (30,30) of
 %  Image 1
-
+index=[unidrnd(512-patchsize,2,numpatches);unidrnd(10,1,numpatches)];
+for i=1:numpatches
+    patches(:,i)=reshape(IMAGES((index(1,i):(index(1,i)+patchsize-1)), ...
+                                (index(2,i):(index(2,i)+patchsize-1)), ...
+                                (index(3,i))),patchsize*patchsize,1);
+end
 
 
 
