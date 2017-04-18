@@ -41,8 +41,16 @@ w2grad = zeros(size(w2));
 % Stated differently, if we were using batch gradient descent to optimize the parameters,
 % the gradient descent update to W1 would be W1 := W1 - alpha * W1grad, and similarly for W2, w1, w2. 
 % 
-
-
+i=100;
+X1=sigmoid(W1*data(:,i)+w1);
+X2=sigmoid(W2*X1+w2);
+Delta2=X2 .* (1-X2) .* (X2-data(i));
+Delta1=X1 .* (X1-1) .* (W2'*Delta2);
+W1grad=Delta1*data(:,i)';
+W2grad=Delta2*X1';
+w1grad=Delta1;
+w2grad=Delta2;
+cost=1/2*((X2-data(:,i))'*(X2-data(:,i)));
 
 
 
@@ -64,7 +72,6 @@ w2grad = zeros(size(w2));
 % After computing the cost and gradient, we will convert the gradients back
 % to a vector format (suitable for minFunc).  Specifically, we will unroll
 % your gradient matrices into a vector.
-
 grad = [W1grad(:) ; W2grad(:) ; w1grad(:) ; w2grad(:)];
 
 end
