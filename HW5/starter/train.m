@@ -20,7 +20,7 @@ sparsityParam = 0.01;   % desired average activation of the hidden units.
                      % (This was denoted by the Greek alphabet rho, which looks like a lower-case "p",
 		     %  in the lecture notes). 
 lambda = 0.0001;     % weight decay parameter       
-beta = 0;%3;            % weight of sparsity penalty term       
+beta = 3;            % weight of sparsity penalty term       
 
 %%======================================================================
 %% STEP 1: Implement sampleIMAGES
@@ -85,7 +85,7 @@ numgrad = computeNumericalGradient( @(x) sparseAutoencoderCost(x, visibleSize, .
                                                   patches), theta);
 
 % Use this to visually compare the gradients side by side
-%disp([numgrad grad]); 
+disp([numgrad grad]); 
 
 % Compare numerically computed gradients with the ones obtained from backpropagation
 diff = norm(numgrad-grad)/norm(numgrad+grad);

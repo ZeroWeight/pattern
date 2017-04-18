@@ -44,24 +44,25 @@ w2grad = zeros(size(w2));
 [n, m] = size(data);
 X1 = sigmoid(repmat(w1,1,m)+W1*data); 
 X2 = sigmoid(repmat(w2,1,m)+ W2*X1);
-
+%Compute gradient
 delta = X2 - data;
-delta2 = delta .* X2 .* (1-X2);
-rho_hat = mean(X1, 2);
-S_delta = beta * (-sparsityParam ./ rho_hat + (1-sparsityParam) ./ (1-rho_hat));
-S_delta = repmat(S_delta, 1, m);
-delta1 = (W2'*delta2 + S_delta) .* X1 .* (1-X1);%25*10000
+Delta2 = delta .* X2 .* (1-X2);%64*10000
+rho = mean(X1, 2); % 25*1
+deltaS = beta * (-sparsityParam./rho + (1-sparsityParam)./(1-rho));
+deltaS = repmat(deltaS, 1, m);
+Delta1 = (W2'*Delta2 + deltaS) .* X1 .* (1-X1);%25*10000
 
-w2grad = delta2(:,1)/m;
-W2grad = (delta2 * X1') / m + lambda * W2;
-w1grad = delta1(:,1)/m;
-W1grad = delta1 * data' / m + lambda * W1;
-
-delta_vec = delta(:);
+Grad2 = Delta2 * [ones(m,1),X1']/m;
+Grad1 = Delta1 * [ones(m,1),data']/m;
 W1_vec = W1(:); W2_vec = W2(:);
-cost = 0.5 * (delta_vec'*delta_vec) / m + 0.5 * lambda * (W1_vec'*W1_vec + W2_vec'*W2_vec)+...
-    beta * sum(sparsityParam * (log(sparsityParam)-log(rho_hat)) + ...
-    (1 - sparsityParam) * (log(1-sparsityParam)-log(1-rho_hat)));
+w2grad = Grad2(:, 1); 
+W2grad = Grad2(:, 2:end) + lambda * W2;
+w1grad = Grad1(:, 1); 
+W1grad = Grad1(:, 2:end) + lambda * W1;
+delta_vec = delta(:);
+cost =  0.5 * (delta_vec'*delta_vec) / m + 0.5 * lambda * (W1_vec'*W1_vec + W2_vec'*W2_vec)+...
+        beta * sum(sparsityParam * (log(sparsityParam)-log(rho)) + ... 
+        (1 - sparsityParam) * (log(1-sparsityParam)-log(1-rho)));
 
 %-------------------------------------------------------------------
 % After computing the cost and gradient, we will convert the gradients back
