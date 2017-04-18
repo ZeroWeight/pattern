@@ -41,32 +41,27 @@ w2grad = zeros(size(w2));
 % Stated differently, if we were using batch gradient descent to optimize the parameters,
 % the gradient descent update to W1 would be W1 := W1 - alpha * W1grad, and similarly for W2, w1, w2. 
 % 
-i=100;
-X1=sigmoid(W1*data(:,i)+w1);
-X2=sigmoid(W2*X1+w2);
-Delta2=X2 .* (1-X2) .* (X2-data(i));
-Delta1=X1 .* (X1-1) .* (W2'*Delta2);
-W1grad=Delta1*data(:,i)';
-W2grad=Delta2*X1';
-w1grad=Delta1;
-w2grad=Delta2;
-cost=1/2*((X2-data(:,i))'*(X2-data(:,i)));
+[n, m] = size(data);
+X1 = sigmoid(repmat(w1,1,m)+W1*data); 
+X2 = sigmoid(repmat(w2,1,m)+ W2*X1);
 
+delta = X2 - data;
+delta2 = delta .* X2 .* (1-X2);
+rho_hat = mean(X1, 2);
+S_delta = beta * (-sparsityParam ./ rho_hat + (1-sparsityParam) ./ (1-rho_hat));
+S_delta = repmat(S_delta, 1, m);
+delta1 = (W2'*delta2 + S_delta) .* X1 .* (1-X1);%25*10000
 
+w2grad = delta2(:,1)/m;
+W2grad = (delta2 * X1') / m + lambda * W2;
+w1grad = delta1(:,1)/m;
+W1grad = delta1 * data' / m + lambda * W1;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+delta_vec = delta(:);
+W1_vec = W1(:); W2_vec = W2(:);
+cost = 0.5 * (delta_vec'*delta_vec) / m + 0.5 * lambda * (W1_vec'*W1_vec + W2_vec'*W2_vec)+...
+    beta * sum(sparsityParam * (log(sparsityParam)-log(rho_hat)) + ...
+    (1 - sparsityParam) * (log(1-sparsityParam)-log(1-rho_hat)));
 
 %-------------------------------------------------------------------
 % After computing the cost and gradient, we will convert the gradients back

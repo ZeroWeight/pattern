@@ -17,7 +17,7 @@ numgrad = zeros(size(theta));
 % respect to theta(i).
 %                
 % Hint: You will probably want to compute the elements of numgrad one at a time. 
-eps=1e-6;
+eps=1e-4;
 thetaplus=repmat(theta,1,length(theta))+eps*eye(length(theta));
 thetaminus=repmat(theta,1,length(theta))-eps*eye(length(theta));
 for i=1:length(theta)
