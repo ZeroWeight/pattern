@@ -98,7 +98,7 @@ disp(diff); % Should be small. In our implementation, these values are
 %% STEP 4: After verifying that your implementation of
 %  sparseAutoencoderCost is correct, You can start training your sparse
 %  autoencoder with minFunc (L-BFGS).
-
+tic
 %  Randomly initialize the parameters
 theta = initializeParameters(hiddenSize, visibleSize);
 
@@ -118,7 +118,7 @@ options.display = 'on';
                                    lambda, sparsityParam, ...
                                    beta, patches), ...
                               theta, options);
-
+toc
 %%======================================================================
 %% STEP 5: Visualization 
 
