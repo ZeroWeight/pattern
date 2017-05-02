@@ -25,12 +25,16 @@ clear pattern2;
 T=[TY,TX];
 clear TX;
 clear TY;
-k=500;
-A=T(randperm(length(T),k),:);
+%k=500;
+%A=T(randperm(length(T),k),:);
+A=T;
 clear k;
 X=A(:,2:28*28+1);
 Y=A(:,1);
 clear T;
 clear A;
 fprintf( 'starting training adaboost\n');
-adaboost(X,Y,CX,CY,200);
+itera = adaboost(X,Y,CX,CY,400);
+plot(itera(:,1),itera(:,3))
+hold on
+plot(itera(:,1),itera(:,2))
