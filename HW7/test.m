@@ -1,3 +1,4 @@
+load 'tree_wood.mat'
 disp('Simple Tree(4)');
 disp(mean(CY==simpleTree.predictFcn(CX)));
 disp('medium Tree(20)')
