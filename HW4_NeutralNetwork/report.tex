@@ -1,0 +1,76 @@
+\documentclass[UTF8,a4paper]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    numbers=left, 
+    numberstyle= \tiny, 
+    keywordstyle= \color{ blue!70},
+    commentstyle= \color{red!50!green!50!blue!50}, 
+    frame=shadowbox, % 阴影效果
+    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+    escapeinside=``, % 英文分号中可写入中文
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+    framexleftmargin=2em
+} 
+\title{模式识别作业4}
+\author{张蔚桐\ 2015011493\ 自55}
+\begin {document}
+\maketitle
+\section{神经网络的训练}
+如下图所示是隐节点分别为5,10,20,40,100的情况的测试集的confusionTest matrix
+
+从各个图中可以看出，随着隐节点的增多，混淆矩阵指示的准确性提高，训练误差逐渐降低，分析错误率同时降低，收敛速度也得到了提高。但是，当隐节点增多到一定程度后，出现了过拟合的情况，上面的各个评估指数的变化逐渐不明显
+
+\begin{figure}
+\includegraphics[width=\textwidth]{5confusionTest.jpg}
+\caption{5隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{5performance.jpg}
+\caption{5隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{10confusionTest.jpg}
+\caption{10隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{10performance.jpg}
+\caption{10隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{20confusionTest.jpg}
+\caption{20隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{20performance.jpg}
+\caption{20隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{40confusionTest.jpg}
+\caption{40隐节点测试集混淆矩阵}
+\includegraphics[width=\textwidth]{40performance.jpg}
+\caption{40隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{100confusionTest.jpg}
+\caption{100隐节点测试集混淆矩阵}
+\label{confusion}
+\includegraphics[width=\textwidth]{100performance.jpg}
+\caption{100隐节点训练误差曲线}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{image.jpg}
+\caption{训练集中的图像}
+\includegraphics[width=\textwidth]{pdf.jpg}
+\caption{概率密度图像}
+\label{pdf}
+\end{figure}
+\clearpage
+\section{神经网络准确性和线性方法的比较}
+从图\ref{confusion}可得神经网络中出现误差较大的识别组为‘7’和‘9’两组，正确率达到98.57%，下面采用Fisher和Logistic方法进行线性分类
+\subsection{Fisher方法}
+如图\ref{pdf}所示是Fisher得到的概率密度图像，经过学习可以得到正确率为95.73\%
+\subsection{Logistic方法}
+Logistic方法学习迭代1000次可以得到正确率96.02\%
+\subsection{总结}
+可以看出神经网络在准确度上明显优于Logistic方法，这可以理解为神经网络是一种复杂化了的Logistic方法。而Fisher方法相对于Logistic方法的准确度相对较差，但并不明显
+\end{document}
